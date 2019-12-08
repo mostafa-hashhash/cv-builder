@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %} {var.name} Profile {% endblock %}
+{% block head %}  {var.name} Profile {% endblock %}
+	
+{% block body %}
+    
+	
+    <h2> Personal Details</h2>
+    <h3> {{ var["name"] }} </h3>
+    <p> {{ var.["email"]}} </p>
+    <p> {{ var["phone"] }} </p>
+
+
+    <h2> Work Experience </h2>
+    <h2> Education </h2>
+    <h2> Awesome Projects</h2>
+    <h2> Professional Skills </h2>
+    <h2> Achievements & Awarsa</h2>
+    <h2> Extracurricular Activities</h2>
+
+
+{% endblock %}

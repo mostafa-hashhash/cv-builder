@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %} Registeration {% endblock %}
+{% block head %}  Register {% endblock %}
+	
+{% block body %}
+
+	<form method="post" action=" {{ url_for('register') }} " >
+		<input type="text"     name="name"     placeholder=" {{x}} Name"  autocomplete="off" autofocus>
+		<input type="password" name="password" placeholder=" Password">
+		<input type="email"    name="email"    placeholder=" Email">
+		<input type="submit"  value=" Register ">
+	</form>
+
+	Have an Account ? <a href="{{url_for('login')}}"> Login Now</a>
+
+{% endblock %}

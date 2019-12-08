@@ -1,0 +1,16 @@
+{% extends "layout,html" %}
+
+{% block title %}	Admin	{% endblock %}
+
+{% block head %}	Admin Dashboard 	{% endblock %}
+
+
+{% block body %}
+
+<ul>
+	<li><a href="{{ url_for ('register', x='Student' ) }}"> Add Student </a></li>
+	<li><a href="{{ url_for ('register', x='Teacher' ) }}"> Add Teacher </a></li>
+	<li><a href="{{ url_for ('register', x='Admin' ) }}"> Add Admin </a></li>
+</ul>
+
+{% endblock %}

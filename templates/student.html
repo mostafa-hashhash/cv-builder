@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %} Home {% endblock %}
+{% block head %} Welcome to The Home Page {% endblock %}
+	
+{% block body %}
+
+		<div>
+			<ul>
+				<li><a href="{{ url_for('logout') }}"> Logout </a></li>
+			</ul>
+		</div>
+	
+		<ul>
+			<li>{{ var["name"]}} </li>
+			<li>{{ var["age"]}} </li>
+			<li>{{ var["email"]}} </li>
+			<li>{{ var["phone"]}} </li>
+		</ul>
+			
+
+{% endblock %}

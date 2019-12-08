@@ -1,0 +1,16 @@
+{% extends "layout,html" %}
+
+{% block title %}	Teacher	{% endblock %}
+
+{% block head %}	Teacher Dashboard 	{% endblock %}
+
+
+{% block body %}
+
+<ul>
+	<li><a href="{{ url_for ('register', obj='Student' ) }}"> Add Student </a></li>
+	<li><a href="{{ url_for ('add_absent' ) }}"> Add Delay/Absence </a></li>
+	<li><a href="{{ url_for ('add_lecture' ) }}"> Add Lecture </a></li>
+</ul>
+
+{% endblock %}
