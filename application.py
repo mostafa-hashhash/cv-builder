@@ -18,19 +18,21 @@ db.init_app(app)
 with app.app_context():
 	db.create_all()
 
+
 @app.route("/")
 def home():
 	return redirect(url_for('login'))
 
+
 @app.route("/profile")
 def profile():
-
 	return render_template("profile.html")
+
 
 @app.route("/edit")
 def edit():
-
 	render_template("edit.html")
+
 
 @app.route("/logout")
 def logout():
@@ -47,12 +49,13 @@ def login():
 		password = request.form.get('password') 
 
 		loged = user.query.filter_by(name=user_name, password=password).first()
+		data = section.query.filter_by(user_id = loged.id).all()
+
 		if loged is not None:
 			session["user_name"] = user_name
 			session["password" ] = password
-			return render_template('profile',var=loged )
-		 else:
-			return render_template('error.html')
+			return render_template('profile.html',person=loged, info=data )
+
 	else: ## request.method == "GET"
 		if "user_name" not in session and "password" not in session :
 			return render_template("login.html")
@@ -60,7 +63,10 @@ def login():
 			user_name = session["user_name"]
 			password = session["password"]
 			loged = user.query.filter_by(name=user_name, password=password).first()
-			return render_template('student',var=loged )
+			##data  = db.session.query(user,section).filter(user.id == section.user_id ).all()
+			##data = section.query.get(loged.id).user
+			data = section.query.filter_by(user_id = loged.id).all()
+			return render_template('profile.html',person=loged ,info = data )
 
 
 @app.route("/register", methods=["GET", "POST"])
