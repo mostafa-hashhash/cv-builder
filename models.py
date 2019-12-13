@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
-
 class user(db.Model):
 	__tablename__ = "user"
 	id       = db.Column(db.Integer, primary_key=True)
@@ -11,7 +10,7 @@ class user(db.Model):
 	address  = db.Column(db.String(50),nullable = False)
 	linkedin = db.Column(db.String(50),nullable = False)
 	github   = db.Column(db.String(50),nullable = False)
-	phone    = dp.Column(db.Integer   ,nullable = False)
+	phone    = db.Column(db.Integer   ,nullable = False)
 
 	def __init__ (self,name,password,email,phone,address,linkedin,github):
 		user.password =  password
@@ -30,13 +29,14 @@ class user(db.Model):
 
 class section(db.Model):
 	__tablename__ = "section"
-	id      = db.Column(db.Integer,  primary_key=True)
-	title   = db.Column(db.String(40) ,nullable = False)
-	role    = db.Column(db.String(40) ,nullable = False)
-	content = db.Column(db.String(200),nullable = False)
-	position= db.Column(db.String(5)  ,nullable = False)
-	date    = db.Column(db.Time(60)   ,nullable = False)
-	user_id = db.Column(db.Integer    ,nullable= False)
+	id      = db.Column(db.Integer ,primary_key=True)
+	title   = db.Column(db.String  ,nullable = False)
+	role    = db.Column(db.String  ,nullable = False)
+	content = db.Column(db.String  ,nullable = False)
+	position= db.Column(db.String  ,nullable = False)
+	date    = db.Column(db.Time    ,nullable = False)
+	user_id = db.Column(db.Integer ,db.ForeignKey("user.id"),nullable= False)
+	userR   = db.relationship('user', foreign_keys='section.user_id')
 
 	def __init__ (self,title,content,role,position,date):
 		section.title =  title
